@@ -5,11 +5,27 @@ from feature_vector_extraction import get_feature_vectors, cosine_similarity
 import os
 import json
 
-IMAGE_PATH = 'images/22.jpeg'
+IMAGE_PATH = 'images/trial2.jpg'
 INVENTORY_PATH = 'inventory'
+def image_resize(image, width = None, height = None, inter = cv2.INTER_AREA):
+    dim = None
+    (h, w) = image.shape[:2]
+    if width is None and height is None:
+        return image
+    if width is None:
+        r = height / float(h)
+        dim = (int(w * r), height)
+
+    else:
+        r = width / float(w)
+        dim = (width, int(h * r))
+
+    resized = cv2.resize(image, dim, interpolation = inter)
+    return resized
 
 def get_embedding(img_path):
-    orig_img = cv2.imread(img_path)
+    orig_img_unresized = cv2.imread(img_path)
+    orig_img = image_resize(orig_img_unresized, height = 600)
     person_img = extract_segmented_img(orig_img)
     clothing_img = extract_cloth_img(person_img)
     feature_vector_img = get_feature_vectors(clothing_img)
