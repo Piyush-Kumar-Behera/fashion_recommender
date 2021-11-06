@@ -47,7 +47,9 @@ def extract_pose_crop(img, model):
     x_extremes = [int(x) for x in x_extremes]
     y_extremes = [int(y) for y in y_extremes]
     final_img = img[y_extremes[0]:y_extremes[1], x_extremes[0]:x_extremes[1], :]
-
+    
+    if final_img.shape[0] * final_img.shape[1] < 1000:
+        final_img = img
     return final_img
 
 def extract_cloth_img(img):
@@ -57,7 +59,7 @@ def extract_cloth_img(img):
 
 if __name__ == '__main__':
     
-    IMAGE_PATH = 'inventory/20.jpeg'
+    IMAGE_PATH = 'inventory/10651.jpg'
 
     img = cv2.imread(IMAGE_PATH)
     # print(img.shape)

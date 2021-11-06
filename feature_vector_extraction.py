@@ -47,6 +47,6 @@ def cosine_similarity(vec1, vec2):
     return 1-spatial.distance.cosine(vec1, vec2)
 
 if __name__ == '__main__':
-    image = cv2.imread('inventory/2.png')
+    image = cv2.imread('inventory/10651.jpg')
     vec = get_feature_vectors(image)
     print(vec)

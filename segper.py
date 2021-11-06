@@ -47,11 +47,13 @@ def extract_segmented_img(img):
 
     final_img = img[y:y+h, x:x+w, :]
 
+    if final_img.shape[0] * final_img.shape[1] < 1000:
+        final_img = img
     return final_img
 
 if __name__ == '__main__':
     # model = load_model()
-    img_demo = cv2.imread('inventory/20.jpeg')
+    img_demo = cv2.imread('inventory/10651.jpg')
     print("Image shape before passing to the function : ", img_demo.shape)
     model = load_model()
     print("Model Loading complete!")
