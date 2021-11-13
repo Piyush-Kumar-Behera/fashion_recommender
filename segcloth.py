@@ -25,9 +25,10 @@ def extract_pose_crop(img, model):
     #     if keypoints_scores[idx] > 2:
     #         c = (int(keypoints[idx][0]),int(keypoints[idx][1]))
     #         print(c)
-    #         cv2.circle(img, center = c, radius = 1, color = (255,255,255),thickness = -1)
-    #         cv2.putText(img, keypoints_name[idx], c, cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255))
+    #         cv2.circle(img, center = c, radius = 3, color = (0,0,255),thickness = -1)
+    #         # cv2.putText(img, keypoints_name[idx], c, cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255))
 
+    # cv2.imwrite('presentation/keypoints.jpg',img)
     # cv2.imshow('image', img)
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
@@ -47,7 +48,7 @@ def extract_pose_crop(img, model):
     x_extremes = [int(x) for x in x_extremes]
     y_extremes = [int(y) for y in y_extremes]
     final_img = img[y_extremes[0]:y_extremes[1], x_extremes[0]:x_extremes[1], :]
-    
+    cv2.imwrite('presentation/tshirt_crop.jpg',final_img)
     if final_img.shape[0] * final_img.shape[1] < 1000:
         final_img = img
     return final_img
@@ -59,7 +60,7 @@ def extract_cloth_img(img):
 
 if __name__ == '__main__':
     
-    IMAGE_PATH = 'inventory/10651.jpg'
+    IMAGE_PATH = 'presentation/final_image.jpg'
 
     img = cv2.imread(IMAGE_PATH)
     # print(img.shape)

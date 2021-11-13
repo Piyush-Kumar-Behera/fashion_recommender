@@ -5,7 +5,7 @@ from feature_vector_extraction import get_feature_vectors, cosine_similarity
 import os
 import json
 
-IMAGE_PATH = 'inventory/10651.jpg'
+IMAGE_PATH = 'images/trial3.jpg'
 INVENTORY_PATH = 'inventory'
 def image_resize(image, width = None, height = None, inter = cv2.INTER_AREA):
     dim = None
